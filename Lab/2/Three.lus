@@ -1,0 +1,8 @@
+node Three (x: int) returns (y: int);
+var clk: bool;
+var temp: int;
+let
+    clk = false -> not pre(clk);
+    temp = current(x when clk);
+    y = x + temp;
+tel;

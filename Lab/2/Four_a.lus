@@ -1,0 +1,15 @@
+node Four_a (coin5, coin10: bool) returns (bottle, return_coin: bool);
+var currentcounter: int;
+var nextcounter: int;
+let
+    currentcounter = if coin5 then pre(nextcounter) + 5
+                      else if coin10 then pre(nextcounter) + 10
+                      else pre(nextcounter);
+    nextcounter = if (currentcounter >= 10) then 0
+                 else if (currentcounter >= 5) then 5
+                 else 0;
+    bottle = if (currentcounter >= 10) then true
+             else false;
+    return_coin = if (currentcounter >= 15) then true
+                  else false;
+tel;

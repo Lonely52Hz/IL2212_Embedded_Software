@@ -1,0 +1,27 @@
+
+
+node program2 (a, b: bool) returns (x, y: bool);
+  var s, t : bool;
+let
+  -- Forbidden: a and b shall not be active at the same time
+  assert(not (a and b)); 
+
+  s = false -> if ((not pre(s)) and pre(t) and a) or
+                  b
+               then
+                 true
+               else 
+                 false;
+
+  t = false -> if ((not pre(t)) and a) or
+                  (pre(s) and a) or
+                  ((not (pre(s)) and pre(t) and b)) or
+                  ((not (pre(s)) and pre(t) and (not a)))
+               then
+                 true
+               else
+                 false;
+
+  x = s;
+  y = s and t;
+tel.

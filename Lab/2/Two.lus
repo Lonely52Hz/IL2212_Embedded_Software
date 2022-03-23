@@ -1,0 +1,5 @@
+node Two (input: int) returns (X, Y: int);
+let
+    Y = input + 1;
+    X = 0 -> (pre(input) + pre(X)) * 2 + pre(Y);
+tel;
